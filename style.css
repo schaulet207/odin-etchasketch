@@ -1,0 +1,175 @@
+/* style.css */
+
+/* Base page styling */
+:root {
+    --primary-dark: #333;
+    --primary-light: #ededed;
+    --secondary-light: #fefefe;
+}
+
+body {
+background-color: var(--primary-light);
+color: var(--primary-dark);
+font-family: 'Roboto', sans-serif;
+line-height: 1.6;
+margin-bottom: 100px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Text styling for paragraphs on entire page */
+a {
+    text-decoration: none;
+    color: #E5E7EB;
+    font-size: 18px;
+}
+
+/* Top navigation bar */
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F2937;
+    font-size: 24px;
+    color: F9FAF8;
+    font-weight: bold;
+    padding-left: 120px;
+    padding-right: 120px;
+    margin: 0%;
+    /* Not sure if I like this font better than Roboto or not */s
+    /*font-family: Impact, fantasy;*/
+}
+
+.header .left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-top: 40px;
+    color: #E5E7EB;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 40px;
+    list-style-type: none;
+    padding-top: 40px;
+}
+
+/* Styling for main part of the page */
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.left-m {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8vw;
+    gap: 1vw;
+    padding: 8vw;
+
+}
+
+.right-m {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 8vw;
+}
+
+#grid {
+    border: 1px solid black;
+}
+
+#grid td {
+ width: 20px;
+height: 20px;
+border: 1px solid black;
+}
+
+/*Range Slider*/
+
+body {
+    background: white);
+    }
+
+.slider {
+padding: 2%;
+background: #fcfcfc;
+border-radius: 20px;
+display: flex;
+align-items: center;
+}
+
+.slider label {
+font-size: 24px;
+font-weight: 400;
+font-family: Open Sans;
+padding-left: 1%;
+padding-right: 7%;
+color: black;
+}
+
+.slider input[type="range"] {
+width: 420px;
+height: 2px;
+background: black;
+border: none;
+outline: none;
+}
+
+/* Color Picker */
+body {
+margin: 0;
+padding: 0;
+background-color: #e6e6e6;
+}
+
+h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#color-input {
+    display: none;
+}
+
+#color-label {
+    height: 30px;
+    width: 50px;
+} 
+
+#color-input:checked ~ #color-picker {
+    opacity: 1;
+}
+
+#color-picker {
+position: absolute;
+left: 70px; 
+background-color: white;
+height: 150px;
+width: 185px;
+border: solid 1px #ccc;
+opacity: 0;
+padding: 5px;
+}
+
+canvas:hover {
+cursor: crosshair;
+}

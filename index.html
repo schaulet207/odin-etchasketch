@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="etchASketch.js" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="manifest" href="./img/site.webmanifest">
+    <title>Odin Etch-a-Sketch</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="left">
+                <div class="logo">
+                    <a>Copyright © 2022 Shannon Chaulet</a>
+                </div>
+            </div>
+            <div class="right">
+                <ul class="links">
+                    <li><a href="https://www.github.com/schaulet207">GitHub</a></li>
+                    <li><a href="https://www.linkedin.com/in/schaulet">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="left-m">
+                <h2>Color</h2>
+                <label for="color-input" id="color-label" style="background-color: red"></label>
+                <input type="checkbox" id="color-input" checked></input>
+                <div id="color-picker">
+                  <canvas id="color-block" height="150" width="150"></canvas>
+                  <canvas id="color-strip" height="150" width="30"></canvas>
+                </div>
+                <button class="random-mode" id="randomMode">Random mode</button>
+                <button class="erase" id="erase">Eraser</button>
+                <button class="clear" id="clear">Clear</button>
+                <div class="slider">
+                    <label for="fader">Size </label>
+                    <input type="range" min="4" max="32" value="16" id="slider" 
+                    step="4" list="slideSettings">
+                    <datalist id="slideSettings">
+                    <option>2</option>
+                    <option>4</option>
+                    <option>8</option>
+                    <option>16</option>
+                    <option>24</option>
+                    <option>32</option>
+                    </datalist>
+                </div>
+            </div>
+            <div class="right-m">
+                <div id="container">
+                    <table id="grid">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
