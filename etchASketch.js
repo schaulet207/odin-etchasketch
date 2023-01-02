@@ -4,10 +4,10 @@ const clear = document.getElementById("clear");
 const colorSelector = document.getElementById('colorSelector')
 const randomMode = document.getElementById('randomMode')
 const erase = document.getElementById('erase')
-color = "black";
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
+mode = null;
 
 // change the color of a cell when the mouse is hovering over it
 grid.addEventListener("mouseover", function(event) {
@@ -18,84 +18,101 @@ grid.addEventListener("mouseover", function(event) {
 
 // Eraser button erases by making background values white
 erase.addEventListener("click", function() {
+    mode = 1;
     grid.addEventListener("mouseover", function(event) {
-        if (event.target.nodeName === "TD") {
-          event.target.style.backgroundColor = "white";
+        if (event.target.nodeName === "TD" && mode === 1) {
+        rgbaColor = "white"
+        event.target.style.backgroundColor = rgbaColor;
         }
     });
     });
 
+// Random color mode - picks one of 8 random colors whenever a field is highlighted
+    
+function random () {
+    randomMode.addEventListener("click", function() {
+        mode = 2;
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD" && mode === 2) {
+                let randNum = Math.floor(Math.random() * 7);
+                if (randNum === 0) {
+                    colorLabel.style.backgroundColor = "blue";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                        rgbaColor = "blue";
+                        event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+                else if (randNum === 1) {
+                    colorLabel.style.backgroundColor = "red";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                            rgbaColor = "red";
+                            event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+                else if (randNum === 2) {
+                    colorLabel.style.backgroundColor = "yellow";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                            rgbaColor = "yellow";
+                            event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+                else if (randNum === 3) {
+                    colorLabel.style.backgroundColor = "green";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                            rgbaColor = "green";
+                            event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+                else if (randNum === 4) {
+                    colorLabel.style.backgroundColor = "purple";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                            rgbaColor = "purple";
+                            event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+                else if (randNum === 5) {
+                    colorLabel.style.backgroundColor = "brown";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                            rgbaColor = "brown";
+                            event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+                else if (randNum === 6) {
+                    colorLabel.style.backgroundColor = "gold";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                            rgbaColor = "gold";
+                            event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+                else {
+                    colorLabel.style.backgroundColor = "silver";
+                    grid.addEventListener("mouseover", function(event) {
+                        if (event.target.nodeName === "TD" && mode === 2) {
+                            rgbaColor = "silver";
+                            event.target.style.backgroundColor = rgbaColor;
+                        }
+                    });
+                }
+            }
+        });
+    });
+}
+random();
 
-// Random button sets a random color value 
-randomMode.addEventListener("click", function() {
-    let randNum = Math.floor(Math.random() * 7);
-    if (randNum === 0) {
-        colorLabel.style.backgroundColor = "blue";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "blue";
-            }
-        });
-    }
-    else if (randNum === 1) {
-        colorLabel.style.backgroundColor = "red";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "red";
-            }
-        });
-    }
-    else if (randNum === 2) {
-        colorLabel.style.backgroundColor = "yellow";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "yellow";
-            }
-        });
-    }
-    else if (randNum === 3) {
-        colorLabel.style.backgroundColor = "green";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "green";
-            }
-        });
-    }
-    else if (randNum === 4) {
-        colorLabel.style.backgroundColor = "purple";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "purple";
-            }
-        });
-    }
-    else if (randNum === 5) {
-        colorLabel.style.backgroundColor = "brown";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "brown";
-            }
-        });
-    }
-    else if (randNum === 6) {
-        colorLabel.style.backgroundColor = "gold";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "gold";
-            }
-        });
-    }
-    else {
-        colorLabel.style.backgroundColor = "silver";
-        grid.addEventListener("mouseover", function(event) {
-            if (event.target.nodeName === "TD") {
-              event.target.style.backgroundColor = "silver";
-            }
-        });
-    }
-
-});
-  
 // clear the grid when the clear button is clicked
 clear.addEventListener("click", function() {
 const cells = grid.getElementsByTagName("td");
@@ -152,11 +169,12 @@ ctx2.fill();
 function click(e) {
   x = e.offsetX;
   y = e.offsetY;
+  mode = 3;
   var imageData = ctx2.getImageData(x, y, 1, 1).data;
   rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
   fillGradient();
   grid.addEventListener("mouseover", function(event) {
-    if (event.target.nodeName === "TD") {
+    if (event.target.nodeName === "TD" && mode === 3) {
       event.target.style.backgroundColor = rgbaColor;
     }
 });
