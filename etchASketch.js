@@ -5,17 +5,95 @@ const colorSelector = document.getElementById('colorSelector')
 const randomMode = document.getElementById('randomMode')
 const erase = document.getElementById('erase')
 color = "black";
-
-/* // change the color selected to blue
-colorSelector.addEventListener("click", function() {
-    color = "blue";
-    }); */
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
 
 // change the color of a cell when the mouse is hovering over it
 grid.addEventListener("mouseover", function(event) {
     if (event.target.nodeName === "TD") {
       event.target.style.backgroundColor = rgbaColor;
     }
+});
+
+// Eraser button erases by making background values white
+erase.addEventListener("click", function() {
+    grid.addEventListener("mouseover", function(event) {
+        if (event.target.nodeName === "TD") {
+          event.target.style.backgroundColor = "white";
+        }
+    });
+    });
+
+
+// Random button sets a random color value 
+randomMode.addEventListener("click", function() {
+    let randNum = Math.floor(Math.random() * 7);
+    if (randNum === 0) {
+        colorLabel.style.backgroundColor = "blue";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "blue";
+            }
+        });
+    }
+    else if (randNum === 1) {
+        colorLabel.style.backgroundColor = "red";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "red";
+            }
+        });
+    }
+    else if (randNum === 2) {
+        colorLabel.style.backgroundColor = "yellow";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "yellow";
+            }
+        });
+    }
+    else if (randNum === 3) {
+        colorLabel.style.backgroundColor = "green";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "green";
+            }
+        });
+    }
+    else if (randNum === 4) {
+        colorLabel.style.backgroundColor = "purple";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "purple";
+            }
+        });
+    }
+    else if (randNum === 5) {
+        colorLabel.style.backgroundColor = "brown";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "brown";
+            }
+        });
+    }
+    else if (randNum === 6) {
+        colorLabel.style.backgroundColor = "gold";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "gold";
+            }
+        });
+    }
+    else {
+        colorLabel.style.backgroundColor = "silver";
+        grid.addEventListener("mouseover", function(event) {
+            if (event.target.nodeName === "TD") {
+              event.target.style.backgroundColor = "silver";
+            }
+        });
+    }
+
 });
   
 // clear the grid when the clear button is clicked
@@ -38,7 +116,7 @@ for (let i = 0; i < rows; i++) {
   grid.appendChild(row);
 }
 
-/* Color Picker */
+// Color Selector 
 var colorBlock = document.getElementById('color-block');
 var ctx1 = colorBlock.getContext('2d');
 var width1 = colorBlock.width;
@@ -77,6 +155,11 @@ function click(e) {
   var imageData = ctx2.getImageData(x, y, 1, 1).data;
   rgbaColor = 'rgba(' + imageData[0] + ',' + imageData[1] + ',' + imageData[2] + ',1)';
   fillGradient();
+  grid.addEventListener("mouseover", function(event) {
+    if (event.target.nodeName === "TD") {
+      event.target.style.backgroundColor = rgbaColor;
+    }
+});
 }
 
 function fillGradient() {
