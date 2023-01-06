@@ -28,7 +28,6 @@ erase.addEventListener("click", function() {
     });
 
 // Random color mode - picks one of 8 random colors whenever a field is highlighted
-    
 function random () {
     randomMode.addEventListener("click", function() {
         mode = 2;
@@ -115,8 +114,8 @@ random();
 
 // clear the grid when the clear button is clicked
 clear.addEventListener("click", function() {
-const cells = grid.getElementsByTagName("td");
-for (const cell of cells) {
+var cells = grid.getElementsByTagName("td");
+for (var cell of cells) {
     cell.style.backgroundColor = "white";
     }
 });
@@ -145,6 +144,8 @@ var width2 = colorStrip.width;
 var height2 = colorStrip.height;
 
 var colorLabel = document.getElementById('color-label');
+document.getElementById("color-input").checked = false;
+
 
 var x = 0;
 var y = 0;
@@ -167,6 +168,7 @@ ctx2.fillStyle = grd1;
 ctx2.fill();
 
 function click(e) {
+  document.getElementById("color-input").checked = true;
   x = e.offsetX;
   y = e.offsetY;
   mode = 3;
