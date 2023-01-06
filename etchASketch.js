@@ -121,8 +121,9 @@ for (var cell of cells) {
 });
 
 // create the etch-a-sketch grid
-rows = 16;
-cols = 16;
+var slider = document.getElementById("myRange");
+rows = slider.value;
+cols = slider.value;
 for (let i = 0; i < rows; i++) {
   row = document.createElement("tr");
   for (let j = 0; j < cols; j++) {
@@ -181,6 +182,27 @@ function click(e) {
     }
 });
 }
+
+// Grid Size Slider stuff
+slider.oninput = function() {
+    rows = slider.value;
+    cols = slider.value;
+    for (let i = 0; i < rows; i++) {
+        row = document.createElement("tr");
+        for (let j = 0; j < cols; j++) {
+          const cell = document.createElement("td");
+          row.appendChild(cell);
+        }
+        grid.appendChild(row);
+      }
+
+        
+    }
+
+
+    
+
+
 
 function fillGradient() {
   ctx1.fillStyle = rgbaColor;

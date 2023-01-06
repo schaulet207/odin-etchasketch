@@ -41,10 +41,10 @@
                 <button class="random-mode" id="randomMode" role="button">Random mode</button>
                 <button class="erase" id="erase" role="button">Eraser</button>
                 <button class="clear" id="clear" role="button">Clear</button>
-                <div class="slider">
+                
+                <div class="buttonwidth">
                     <label for="fader">Grid</label>
-                    <input type="range" min="4" max="32" value="16" id="slider" 
-                    step="4" list="slideSettings">
+                    <input type="range" min="4" max="32" id="myRange" value="16" step="4" class="slider" list="slideSettings">
                     <datalist id="slideSettings">
                     <option>2</option>
                     <option>4</option>
@@ -59,6 +59,7 @@
                 <div id="container">
                     <table id="grid">
                     </table>
+                    <h2 id="demo"></h2>
                 </div>
             </div>
         </div>
