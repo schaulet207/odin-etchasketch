@@ -127,7 +127,7 @@ cols = slider.value;
 for (let i = 0; i < rows; i++) {
   row = document.createElement("tr");
   for (let j = 0; j < cols; j++) {
-    const cell = document.createElement("td");
+    cell = document.createElement("td");
     row.appendChild(cell);
   }
   grid.appendChild(row);
@@ -184,25 +184,23 @@ function click(e) {
 }
 
 // Grid Size Slider stuff
+const gridSize = document.getElementById("gridsize");
+gridSize.innerHTML = slider.value + "x" + slider.value;
+
 slider.oninput = function() {
+    gridSize.innerHTML = slider.value + "x" + slider.value;
     rows = slider.value;
     cols = slider.value;
+    grid.innerHTML = null;
     for (let i = 0; i < rows; i++) {
-        row = document.createElement("tr");
-        for (let j = 0; j < cols; j++) {
-          const cell = document.createElement("td");
-          row.appendChild(cell);
-        }
-        grid.appendChild(row);
-      }
-
-        
+    row = document.createElement("tr");
+    for (let j = 0; j < cols; j++) {
+        cell = document.createElement("td");
+        row.appendChild(cell);
     }
-
-
-    
-
-
+    grid.appendChild(row);
+    }
+}
 
 function fillGradient() {
   ctx1.fillStyle = rgbaColor;
